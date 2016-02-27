@@ -1,0 +1,5 @@
+div
+  p #[a(href='#/') back]
+  p phone number is {{call.number}}
+  p(ng-repeat='(key, value) in call.data').
+    {{key}}: {{value}}

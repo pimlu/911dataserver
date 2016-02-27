@@ -1,0 +1,17 @@
+{
+  "name": "911dataserver",
+  "version": "1.0.0",
+  "description": "911dataserver",
+  "main": "app.js",
+  "scripts": {
+    "start": "node --harmony app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "pimlu",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "jade": "^1.11.0"
+  }
+}
