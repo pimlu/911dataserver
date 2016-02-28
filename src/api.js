@@ -56,6 +56,13 @@ router.post('/911', function(req, res) {
 router.post('/heartbeat', function(req, res) {
   var num = req.body.number;
   if(!num || !calls[num]) return wtf(res);
+  console.log(req.body);
+  //set latitude and longitude, if it exists
+  ['lat', 'lng'].map(key => {
+    if(req.body[key] !== void 0) {
+      calls[num][key] = req.body[key];
+    }
+  })
   //if there's a reason, they're ending rather than continuing
   if(req.body.reason) return res.json(endCall(req.body.reason));
   calls[num].pump();
@@ -87,5 +94,14 @@ router.post('/auth/call', function(req, res) {
     call: _.omit(call,['pump'])
   });
 });
-
+//position of a caller
+router.post('/auth/loc', function(req, res) {
+    const call = calls[req.body.number];
+    if(!call) return wtf(res);
+    res.json({
+      success: true,
+      lat: call.lat,
+      lng: call.lng
+    });
+});
 module.exports = router;

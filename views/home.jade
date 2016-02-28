@@ -14,6 +14,7 @@ html(ng-app='app')
     
     script(src='/js/components.js')
     script(src='/js/app.js')
+    script(async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA86EXOH85GRD85SBbmywaC5W8NIcqdcDw&signed_in=true&callback=initMap")
   body(ng-controller='AppCtrl as appct')
     nav
       .col.s12

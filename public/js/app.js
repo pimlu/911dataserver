@@ -52,10 +52,28 @@ angular.module('app', ['ngRoute', 'components'])
     cancel && cancel.resolve();
   });
 }])
-.controller('CallCtrl', ['$scope', '$routeParams', '$http', '$q',
-  function($scope, $routeParams, $http, $q) {
+.controller('CallCtrl', ['$scope', '$routeParams', '$http', '$q', '$timeout',
+  function($scope, $routeParams, $http, $q, $timeout) {
+  
+    
+    
+  
   var number = $routeParams.number;
   $scope.call = { number: number };
+  //once per UPDATE_RATE, make an http request to monitor the call list
+  var callfn = function() {
+    cancel = $q.defer();
+    callt = $timeout(LOC_RATE);
+    var req = $http.post('/api/auth/loc', {
+      token: getToken(),
+      number: number
+    }, { timeout: cancel }).then(function(res) {
+      $scope.lat = res.data.lat;
+      $scope.lng = res.data.lng;
+    });
+    $q.all([callt, req]).then(callfn);
+  };
+  callfn();
   var cancel = $q.defer();
   //TODO updates?
   var req = $http.post('/api/auth/call', {
