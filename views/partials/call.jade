@@ -21,9 +21,15 @@ div
           tr
             td Name
             td {{data.name}}
+          tr
+            td Blood Type
+            td {{data.bt}}
+          tr
+            td Allergies
+            td {{data.allergies}}
         .vspace
-        p(ng-show='call.data') debug k/v pairs:
-        p(ng-repeat='(key, value) in call.data').
+        //p(ng-show='call.data') debug k/v pairs:
+        //p(ng-repeat='(key, value) in call.data').
           {{key}}: {{value}}
       div.tcenter(ng-hide='call.data').
         Loading...

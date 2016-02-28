@@ -13,7 +13,9 @@ $(function() {
     post('/api/911', {
       number: $('#number').val(),
       data: {
-        name: 'stubot'
+        name: 'Stuart Geipel',
+        bt: 'A+',
+        allergies: 'Peanuts'
       }
     });
     clearInterval(interval);
