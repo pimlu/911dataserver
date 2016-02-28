@@ -1,0 +1,23 @@
+html
+  head
+    title 911 data server
+    
+    script(src='/lib/lodash/lodash.js')
+    script(src='/lib/jquery/dist/jquery.js')
+    
+    //TODO REMOVE THIRD PARTY DEPENDENCY
+    link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
+    link(rel='stylesheet' href='/lib/Materialize/dist/css/materialize.css')
+    link(rel='stylesheet' href='/css/main.css')
+    
+    
+    script(src='/js/test.js')
+    script(async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA86EXOH85GRD85SBbmywaC5W8NIcqdcDw&signed_in=true&callback=initMap")
+  body
+    nav
+      .col.s12
+        a.breadcrumb(href='#/') Test
+    div(class='container')
+      input(type="text" id="number")
+      a(class="waves-effect waves-light btn" id="call") Call
+      a(class="waves-effect waves-light btn" id="end") End

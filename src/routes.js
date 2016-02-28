@@ -18,9 +18,8 @@ module.exports = function(app) {
     res.render(`partials/${req.params.name}`);
   });
   
-  app.post('/', function(req, res) {
-    res.render('home', {});
+  app.get('/test', function(req, res) {
+    res.render('test', {});
   });
-  
   
 };
