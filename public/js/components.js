@@ -68,16 +68,15 @@ angular.module('components', [])
           if(nvs[0] === void 0) return;
           var pos = {lat: $scope.lat, lng: $scope.lng};
           if(!marker) {
-            new google.maps.Marker({
+            marker = new google.maps.Marker({
               position: pos,
               map: map,
               title: 'Caller Position'
             })
             map.setZoom(17);
           }
-          var mappos = new google.maps.LatLng(pos.lat, pos.lng);
-          marker.setPosition(mappos);
-          map.panTo(mappos);
+          marker.setPosition(pos);
+          map.panTo(pos);
         });
         
         map = new google.maps.Map(document.getElementById('map'), {
