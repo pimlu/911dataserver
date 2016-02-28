@@ -1,6 +1,17 @@
-div(ng-show='calls')
-  p There are {{calls.length}} active calls.
-  div(ng-repeat='call in calls')
+.vspace
+div(ng-show='calls.length')
+  //div(ng-repeat='call in calls')
     a(ng-href='#/call/{{call.number}}') {{call.number}}
-div(ng-hide='calls').
-  Loading...
+  table
+    thead
+      tr
+        td(data-field='number') Number
+        td(data-field='duration') Duration
+    tr(ng-repeat='call in calls | orderBy:\'-time\' track by call.number' ng-click='gotoCall(call.number)')
+      td {{call.number}}
+      td #[min-timer(time='call.time')]
+div(ng-hide='calls.length' class='row tcenter')
+  div(ng-hide='calls').
+    Loading...
+  div(ng-show='calls').
+    No calls are active yet.

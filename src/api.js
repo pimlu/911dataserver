@@ -28,6 +28,7 @@ function beginCall(body) {
   const call = calls[num] = {
     number: num,
     data: body.data || {},
+    time: +new Date,
     pump: _.debounce(function() {
       //if our call is gone, quit
       if(calls[num] !== call) return;
@@ -70,7 +71,10 @@ router.post('/auth/calls', function(req, res) {
   res.json({
     success: true,
     calls: Object.keys(calls).map(function(number) {
-      return { number: number };
+      return {
+        number: number,
+        time: calls[number].time
+      };
     })
   });
 });
@@ -79,9 +83,8 @@ router.post('/auth/call', function(req, res) {
   const call = calls[req.body.number];
   if(!call) return wtf(res);
   res.json({
-    success: true,
-    number: call.number,
-    data: call.data
+    success:true,
+    call: _.omit(call,['pump'])
   });
 });
 

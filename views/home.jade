@@ -6,9 +6,17 @@ html(ng-app='app')
     script(src='/lib/angular/angular.js')
     script(src='/lib/angular-route/angular-route.js')
     
+    //TODO REMOVE THIRD PARTY DEPENDENCY
+    link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
+    link(rel='stylesheet' href='/lib/Materialize/dist/css/materialize.css')
     link(rel='stylesheet' href='/css/main.css')
-      
+    
+    
     script(src='/js/components.js')
     script(src='/js/app.js')
   body(ng-controller='AppCtrl as appct')
-    div(ng-view)
+    nav
+      .col.s12
+        a.breadcrumb(href='#/') Dash
+        a.breadcrumb(ng-href='getL2URL()' ng-show='getL2()') {{getL2()}}
+    div(class='container' ng-view)

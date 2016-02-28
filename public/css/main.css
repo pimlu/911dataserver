@@ -1,1 +1,18 @@
-body { font-family: sans-serif; }
+.top-panel {
+  margin-top: 30px;
+  text-align: center;
+}
+.flip {
+  font-size: 1.2em;
+  display: inline-block;
+  transform: rotate(180deg);
+}
+nav {
+  padding-left: 20px;
+}
+.tcenter {
+  text-align: center;
+}
+.vspace {
+  margin-top: 40px;
+}
