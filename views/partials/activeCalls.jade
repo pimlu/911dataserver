@@ -1,2 +1,6 @@
-div(ng-repeat='call in calls')
-  a(ng-href='#/call/{{call.number}}') {{call.number}}
+div(ng-show='calls')
+  p There are {{calls.length}} active calls.
+  div(ng-repeat='call in calls')
+    a(ng-href='#/call/{{call.number}}') {{call.number}}
+div(ng-hide='calls').
+  Loading...
