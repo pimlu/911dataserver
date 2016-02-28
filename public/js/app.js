@@ -70,6 +70,8 @@ angular.module('app', ['ngRoute', 'components'])
     }, { timeout: cancel }).then(function(res) {
       $scope.lat = res.data.lat;
       $scope.lng = res.data.lng;
+    }, function() {
+      $scope.end = +new Date;
     });
     $q.all([callt, req]).then(callfn);
   };

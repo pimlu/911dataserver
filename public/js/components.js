@@ -31,14 +31,15 @@ angular.module('components', [])
   return {
     restrict: 'E',
     scope: {
-      time: '='
+      time: '=',
+      end: '='
     },
     templateUrl: '/partials/minTimer.html',
     controller: function($scope) {
       var id = curid++;
       scopes[id] = $scope;
       $scope.timeFmt = function() {
-        var t = +new Date, dt = t-$scope.time;
+        var t = $scope.end||+new Date, dt = t-$scope.time;
         var ds = dt/1000, dm = ds/60;
         var m = dm |0, s = ds%60 |0;
         return `${m}:${(''+s).length-1?s:'0'+s}`;

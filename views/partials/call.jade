@@ -6,7 +6,7 @@ div
       span(ng-hide='call.data'). Loading...
     span(ng-show='call.fail').
       {{call.fail}}
-  .row.card-panel
+  .row.card-panel(ng-if="!call.fail")
     .col.s12.m6
       div(ng-show='call.data')
         table
@@ -16,7 +16,8 @@ div
               td(data-field='value') Value
           tr
             td Duration
-            td #[min-timer(time='call.time')]
+            td #[min-timer(time='call.time' end='end')]
+              span(ng-if='end') (finished)
           tr
             td Name
             td {{data.name}}
